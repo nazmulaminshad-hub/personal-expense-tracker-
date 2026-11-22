@@ -1,0 +1,50 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+build/
+dist/
+
+# Local Python environments
+.venv/
+venv/
+env/
+ENV/
+
+# Environment files and credentials
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+secrets.toml
+*.pem
+*.key
+credentials*.json
+service-account*.json
+
+# Local SQLite databases and backups
+data/
+*.db
+*.db-*
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.sqlite3-*
+data/backups/
+
+# Temporary and local development files
+*.tmp
+*.temp
+*.bak
+*.orig
+*.swp
+*.log
+*~
+Thumbs.db
+.DS_Store
