@@ -10,17 +10,29 @@ storage.
 
 ## Screenshots
 
-Screenshots are not included yet. Add reviewed, privacy-safe captures before
-publishing:
+### Overview
 
-| Page | Screenshot |
-| --- | --- |
-| Overview | _Screenshot placeholder — redact all personal financial data._ |
-| Transactions | _Screenshot placeholder — use synthetic or redacted data._ |
-| Budgets & Insights | _Screenshot placeholder — use synthetic or redacted data._ |
-| Analytics | _Screenshot placeholder — use synthetic or redacted data._ |
-| Recurring & Calendar | _Screenshot placeholder — use synthetic or redacted data._ |
-| Reports | _Screenshot placeholder — use synthetic or redacted data._ |
+![Overview page](docs/screenshots/overview.png)
+
+### Transactions
+
+![Transactions page](docs/screenshots/transactions.png)
+
+### Budgets & Insights
+
+![Budgets and Insights page](docs/screenshots/budgets-insights.png)
+
+### Analytics
+
+![Analytics page](docs/screenshots/analytics.png)
+
+### Recurring & Calendar
+
+![Recurring and Calendar page](docs/screenshots/recurring-calendar.png)
+
+### Reports
+
+![Reports page](docs/screenshots/reports.png)
 
 ## Features
 
