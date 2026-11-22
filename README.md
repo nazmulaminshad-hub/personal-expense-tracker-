@@ -281,8 +281,7 @@ local SQLite persistence do not establish production readiness.
 
 ## Author
 
-- Name: _[Your name]_
-- GitHub: _[Your GitHub profile]_
-- Portfolio: _[Your portfolio URL]_
+- Name: Nazmul Amin Shad
+- GitHub: [nazmulaminshad-hub](https://github.com/nazmulaminshad-hub)
 
 Choose and add a license before inviting reuse or contributions.
