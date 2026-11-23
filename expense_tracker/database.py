@@ -44,6 +44,7 @@ def _connection(database_path: Union[str, Path]) -> Iterator[sqlite3.Connection]
     try:
         connection = sqlite3.connect(str(path))
         connection.row_factory = sqlite3.Row
+        connection.execute("PRAGMA foreign_keys = ON")
         _set_private_file_permissions(path)
         with connection:
             yield connection

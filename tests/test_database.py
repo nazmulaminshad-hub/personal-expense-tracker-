@@ -6,6 +6,7 @@ from decimal import Decimal
 from pathlib import Path
 
 from expense_tracker.database import (
+    _connection,
     DatabaseError,
     add_transaction,
     bdt_to_paisa,
@@ -33,6 +34,13 @@ class DatabaseTests(unittest.TestCase):
 
     def tearDown(self):
         self.temporary_directory.cleanup()
+
+    def test_project_connections_enable_foreign_keys(self):
+        with _connection(self.database_path) as connection:
+            self.assertEqual(
+                connection.execute("PRAGMA foreign_keys").fetchone()[0],
+                1,
+            )
 
     def test_initialization_creates_directory_and_is_idempotent(self):
         self.assertTrue(self.database_path.is_file())
