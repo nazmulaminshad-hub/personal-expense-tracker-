@@ -651,7 +651,7 @@ def create_database_backup(
     if not source_path.is_file():
         raise DatabaseError("Cannot back up missing database: {!s}".format(source_path))
 
-    source = sqlite3.connect("file:{}?mode=ro".format(source_path.resolve().as_posix()), uri=True)
+    source = sqlite3.connect(source_path.resolve().as_uri() + "?mode=ro", uri=True)
     destination = None
     try:
         integrity = source.execute("PRAGMA integrity_check").fetchone()
@@ -687,7 +687,7 @@ def restore_database_backup(
     if not source_path.is_file():
         raise DatabaseError("Backup file does not exist: {!s}".format(source_path))
 
-    source = sqlite3.connect("file:{}?mode=ro".format(source_path.resolve().as_posix()), uri=True)
+    source = sqlite3.connect(source_path.resolve().as_uri() + "?mode=ro", uri=True)
     try:
         integrity = source.execute("PRAGMA integrity_check").fetchone()
         if integrity is None or integrity[0] != "ok":
@@ -698,7 +698,7 @@ def restore_database_backup(
         if target_path.is_file():
             safety_backup = create_database_backup(target_path)
 
-        source = sqlite3.connect("file:{}?mode=ro".format(source_path.resolve().as_posix()), uri=True)
+        source = sqlite3.connect(source_path.resolve().as_uri() + "?mode=ro", uri=True)
         target_path.parent.mkdir(parents=True, exist_ok=True)
         target = sqlite3.connect(str(target_path))
         try:

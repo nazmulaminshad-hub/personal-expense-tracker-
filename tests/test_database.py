@@ -440,6 +440,34 @@ class DatabaseTests(unittest.TestCase):
             2,
         )
 
+    def test_backup_and_restore_support_special_character_paths(self):
+        special_directory = self.database_path.parent / "special # folder"
+        source_database = special_directory / "source.sqlite"
+        target_database = special_directory / "restored.sqlite"
+
+        initialize_database(source_database)
+        backup_path = create_database_backup(
+            source_database,
+            special_directory / "backups",
+        )
+
+        initialize_database(target_database)
+        safety_backup = restore_database_backup(backup_path, target_database)
+
+        self.assertTrue(backup_path.is_file())
+        self.assertTrue(safety_backup.is_file())
+
+        with closing(sqlite3.connect(str(target_database))) as connection:
+            integrity = connection.execute(
+                "PRAGMA integrity_check"
+            ).fetchone()[0]
+            table_count = connection.execute(
+                "SELECT COUNT(*) FROM sqlite_master WHERE type='table'"
+            ).fetchone()[0]
+
+        self.assertEqual(integrity, "ok")
+        self.assertGreater(table_count, 0)
+
     def test_database_backup_and_restore_preserve_transactions(self):
         transaction_id = add_transaction(
             "income",
